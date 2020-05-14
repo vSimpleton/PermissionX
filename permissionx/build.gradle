@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 29
@@ -22,6 +23,15 @@ android {
         }
     }
 
+}
+
+publish {
+    userOrg = 'vsimpleton'
+    groupId = 'oms.masm.permissionx'
+    artifactId = 'permissionx'
+    publishVersion = '1.0.0'
+    desc = 'Make Android runtime permission request easy'
+    website = 'https://github.com/vSimpleton/PermissionX'
 }
 
 dependencies {
