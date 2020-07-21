@@ -14,16 +14,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         button.setOnClickListener {
-            PermissionX.request(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.CALL_PHONE
-            ) { allGranted, deniedList ->
-                if (allGranted) {
-                    Toast.makeText(this, "权限申请成功", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "You denied $deniedList", Toast.LENGTH_SHORT).show()
+            PermissionX.init(this).request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE) { allGranted, grantedList, deniedList ->
+                    if (allGranted) {
+                        Toast.makeText(this@MainActivity, "已同意", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this@MainActivity, "已拒绝", Toast.LENGTH_SHORT).show()
+                    }
                 }
-            }
+
         }
     }
 }
